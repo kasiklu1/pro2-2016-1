@@ -6,6 +6,8 @@ public class MainFrame extends JFrame {
 	
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
+
+	protected Screen actualScreen; 
 	
 	public MainFrame() {
 		setSize(WIDTH, HEIGHT);
@@ -14,6 +16,18 @@ public class MainFrame extends JFrame {
 		setTitle("Flappy BIRD");
 		setResizable(false);
 		
+		
+	}
+	
+	public void setScreen(Screen screen) {
+		
+		getContentPane().removeAll();
+		/*if (actualScreen != null){
+			remove(actualScreen);
+		}*/
+		actualScreen = screen;
+		add(screen);
+		revalidate();
 		
 	}
 
