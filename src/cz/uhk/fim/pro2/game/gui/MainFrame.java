@@ -21,10 +21,10 @@ public class MainFrame extends JFrame {
 	
 	public void setScreen(Screen screen) {
 		
-		getContentPane().removeAll();
-		/*if (actualScreen != null){
+	//	getContentPane().removeAll();
+		if (actualScreen != null){
 			remove(actualScreen);
-		}*/
+		}
 		actualScreen = screen;
 		add(screen);
 		revalidate();

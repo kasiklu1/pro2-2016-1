@@ -14,4 +14,19 @@ public class World {
 		this.bird = bird;
 		tubes = new ArrayList<Tube>();
 	}
+	
+	public void addTube(Tube tube){
+		
+		tubes.add(tube);
+	}
+	
+	public List<Tube> getTubes(){
+		
+		return tubes;
+	}
+	
+	public Bird getBird(){
+		
+		return bird;
+	}
 }
