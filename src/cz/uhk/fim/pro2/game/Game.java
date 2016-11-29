@@ -12,7 +12,6 @@ public class Game {
 		
 		MainFrame mainFrame = new MainFrame();
 		HomeScreen homeScreen = new HomeScreen(mainFrame);
-		ScoreScreen gameScreen = new ScoreScreen(mainFrame);
 		
 		mainFrame.setScreen(homeScreen);
 
