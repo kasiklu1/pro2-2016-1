@@ -3,8 +3,11 @@ package cz.uhk.fim.pro2.game.gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import cz.uhk.fim.pro2.game.model.Bird;
@@ -24,6 +27,7 @@ public class GameScreen extends Screen{
 		
 		JButton jButtonBack = new JButton("BACK");
 		JButton jButtonPause = new JButton("PAUSE");
+		JLabel jLabelScore = new JLabel("Score: " + Bird.DEFAULT_SCORE);
 		
 		jButtonBack.addActionListener(new ActionListener() {
 			
@@ -36,6 +40,7 @@ public class GameScreen extends Screen{
 		
 		add(jButtonBack);
 		add(jButtonPause);
+		add(jLabelScore);
 		
 		Bird bird = new Bird("Flapy", 240, 400);
 		World world = new World(bird);
@@ -47,6 +52,16 @@ public class GameScreen extends Screen{
 		GameCanvas gameCanvas = new GameCanvas(world);
 		add(gameCanvas);
 		gameCanvas.setBounds(0,0, MainFrame.WIDTH, MainFrame.HEIGHT);
+		
+		gameCanvas.addMouseListener(new MouseAdapter() {
+		
+			@Override
+			public void mousePressed(MouseEvent e){
+				
+				super.mousePressed(e);
+				bird.goUP();
+			}
+		});
 		
 		
 		timer = new Timer(20, new ActionListener(){

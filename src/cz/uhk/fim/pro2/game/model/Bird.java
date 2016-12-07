@@ -6,8 +6,8 @@ import java.awt.Rectangle;
 
 public class Bird {
 	
-	private static final int GRAVITY = 150;
-	public static final int JUMP = 3;
+	private static final int GRAVITY = 180;
+	public static final int JUMP = 380;
 	public static final int DEFAULT_SCORE = 0;
 	public static final int DEFAULT_LIVES = 3;
 	
@@ -23,7 +23,7 @@ public class Bird {
 		this.name = name;
 		this.positionX = positionX;
 		this.positionY = positionY;
-		this.speed = JUMP / 2;
+		this.speed = 0;
 		this.lives = DEFAULT_LIVES;
 		this.score = DEFAULT_SCORE;
 		
@@ -35,7 +35,7 @@ public class Bird {
 	}
 	public void update(float deltaTime){
 		
-		positionX -= speed * deltaTime;
+		positionY -= speed * deltaTime;
 		positionY += GRAVITY * deltaTime;
 		speed -= speed * deltaTime;
 	}
