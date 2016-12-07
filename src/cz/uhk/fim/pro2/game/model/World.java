@@ -42,10 +42,10 @@ public class World {
 			tr.update(deltaTime);
 		}
 		
-		for(Heart hr : hearts){
+	/*	for(Heart hr : hearts){
 			
 			hr.update(deltaTime);
-		}
+		}*/
 		
 		
 		

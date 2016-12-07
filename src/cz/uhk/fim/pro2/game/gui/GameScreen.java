@@ -68,6 +68,23 @@ public class GameScreen extends Screen{
 			}
 		});
 		
+		jButtonPause.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (timer.isRunning()){
+					
+					timer.stop();
+				}
+				else {
+					
+					lastTimeMillies = System.currentTimeMillis();
+					timer.start();
+				}
+			}
+		});
+		
 		lastTimeMillies = System.currentTimeMillis();
 		timer.start();
 			

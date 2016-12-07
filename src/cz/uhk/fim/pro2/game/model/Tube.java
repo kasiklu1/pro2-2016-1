@@ -4,7 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import cz.uhk.fim.pro2.game.gui.MainFrame;
+
 public class Tube {
+	
+	private static final int GAP = 200;
+	private static final int WIDTH = 50;
 	
 	private float positionX, positionY;
 	private int height;
@@ -21,14 +26,22 @@ public class Tube {
 	
 	public void paint(Graphics g){
 		
-		g.setColor(Color.blue);
-		Rectangle rect = getRect();
-		g.fillRect(rect.x, rect.y, rect.width, rect.height);
+		g.setColor(Color.green);
+		Rectangle rectU = getRectU();
+		g.fillRect(rectU.x, rectU.y, rectU.width, rectU.height);
+		
+		Rectangle rectD = getRectD();
+		g.fillRect(rectD.x, rectD.y, rectD.width, rectD.height);
 		
 	}
-	public Rectangle getRect(){
+	public Rectangle getRectU(){
 		
-		return new Rectangle((int) getPositionX() - 25, (int) getPositionY() - 25, 50, 50 );
+		return new Rectangle((int) getPositionX() - (WIDTH / 2), height, WIDTH, (MainFrame.HEIGHT - height));
+	}
+	
+	public Rectangle getRectD(){
+		
+		return new Rectangle((int) getPositionX() - (WIDTH / 2), 0, WIDTH, (height - GAP));
 	}
 	
 	public void update(float deltaTime){
