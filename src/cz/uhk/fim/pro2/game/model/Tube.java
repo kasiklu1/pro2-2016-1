@@ -31,6 +31,12 @@ public class Tube {
 		return new Rectangle((int) getPositionX() - 25, (int) getPositionY() - 25, 50, 50 );
 	}
 	
+	public void update(float deltaTime){
+		
+		positionX -= World.SPEED * deltaTime;
+		
+	}
+	
 	public float getPositionX(){
 		
 		return positionX;

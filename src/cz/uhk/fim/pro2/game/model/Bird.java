@@ -6,21 +6,43 @@ import java.awt.Rectangle;
 
 public class Bird {
 	
+	private static final int GRAVITY = 150;
+	public static final int JUMP = 3;
+	public static final int DEFAULT_SCORE = 0;
+	public static final int DEFAULT_LIVES = 3;
+	
 	private String name;
 	private float positionX, positionY;
 	private float speed;
 	private int lives;
+	private int score;
+	
 	
 	public Bird(String name, float positionX, float positionY){
 		
 		this.name = name;
 		this.positionX = positionX;
 		this.positionY = positionY;
+		this.speed = JUMP / 2;
+		this.lives = DEFAULT_LIVES;
+		this.score = DEFAULT_SCORE;
 		
 	}
 
 	public void goUP(){
 		
+		speed = JUMP;	
+	}
+	public void update(float deltaTime){
+		
+		positionX -= speed * deltaTime;
+		positionY += GRAVITY * deltaTime;
+		speed -= speed * deltaTime;
+	}
+	
+	public boolean isAlive(){
+		
+		return lives > 0;
 	}
 	
 	public void catchHeart(){

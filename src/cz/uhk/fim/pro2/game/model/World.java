@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class World {
+	
+	public static final int SPEED = 100;
 
 	private Bird bird;
 	private List<Tube> tubes;
+	private List<Heart> hearts;
 	
 	
 	public World(Bird bird){
@@ -28,5 +31,23 @@ public class World {
 	public Bird getBird(){
 		
 		return bird;
+	}
+	
+	public void update(float deltaTime){
+		
+		bird.update(deltaTime);
+		
+		for(Tube tr : tubes){
+			
+			tr.update(deltaTime);
+		}
+		
+		for(Heart hr : hearts){
+			
+			hr.update(deltaTime);
+		}
+		
+		
+		
 	}
 }
