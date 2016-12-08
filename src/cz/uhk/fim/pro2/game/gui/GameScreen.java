@@ -10,15 +10,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+import cz.uhk.fim.pro2.game.interfaces.WorldListener;
 import cz.uhk.fim.pro2.game.model.Bird;
+import cz.uhk.fim.pro2.game.model.Heart;
 import cz.uhk.fim.pro2.game.model.World;
 import cz.uhk.fim.pro2.game.model.Tube;
 
-public class GameScreen extends Screen{
+public class GameScreen extends Screen implements WorldListener{
 	
 	private long lastTimeMillies;
 	private Timer timer;
 	private Bird bird;
+	private String name = "Bedøich";
 	
 	
 	
@@ -28,6 +31,7 @@ public class GameScreen extends Screen{
 		JButton jButtonBack = new JButton("BACK");
 		JButton jButtonPause = new JButton("PAUSE");
 		JLabel jLabelScore = new JLabel("Score: " + Bird.DEFAULT_SCORE);
+		JLabel jLabelLives = new JLabel("Životy: " + Bird.DEFAULT_LIVES);
 		
 		jButtonBack.addActionListener(new ActionListener() {
 			
@@ -41,13 +45,16 @@ public class GameScreen extends Screen{
 		add(jButtonBack);
 		add(jButtonPause);
 		add(jLabelScore);
+		add(jLabelLives);
 		
-		Bird bird = new Bird("Flapy", 240, 400);
-		World world = new World(bird);
+		bird = new Bird("Flapy", 240, 400);
+		World world = new World(bird, this);
 		
 		world.addTube(new Tube(400, 400, Color.green));
 		world.addTube(new Tube(600, 300, Color.red));
 		world.addTube(new Tube(800, 500, Color.green));
+		
+		world.addHeart(new Heart(500, 250));
 		
 		GameCanvas gameCanvas = new GameCanvas(world);
 		add(gameCanvas);
@@ -72,6 +79,9 @@ public class GameScreen extends Screen{
 				long currentTimeMillies = System.currentTimeMillis();
 				float delta = (currentTimeMillies - lastTimeMillies) / 1000F;
 				world.update(delta);
+				
+				jLabelLives.setText("Životy: " + bird.getLives());
+				jLabelScore.setText("Score: " + bird.getScore());
 				
 				if(!bird.isAlive()){
 					
@@ -103,6 +113,35 @@ public class GameScreen extends Screen{
 		lastTimeMillies = System.currentTimeMillis();
 		timer.start();
 			
+	}
+
+
+
+	@Override
+	public void crashTube(Tube tube) {
+	
+		bird.removeLive();
+		bird.setPositionY(tube.getCenterY());
+		System.out.println("Nazazil jsi do trubky. Zbývá ti " + bird.getLives() + " životù.");
+		
+	}
+
+
+
+	@Override
+	public void crashHeart(Heart heart) {
+		
+		bird.addLive();
+		heart.setPositionY(-100);
+		
+	}
+
+
+
+	@Override
+	public void outOfScene() {
+
+		bird.removeLive();
 	}
 
 }

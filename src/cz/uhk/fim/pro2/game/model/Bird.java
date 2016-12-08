@@ -45,20 +45,18 @@ public class Bird {
 		return lives > 0;
 	}
 	
-	public void catchHeart(){
-		
-	}
-	
 	public void die() {
 		
 	}
 	
 	public void addLive(){
 		
+		this.lives++;
 	}
 	
 	public void removeLive(){
 		
+		this.lives--;
 	}
 	
 	public void paint(Graphics g){
@@ -81,6 +79,53 @@ public class Bird {
 	public float getPositionY(){
 		
 		return positionY;
+	}
+	
+	public void setPositionX(float positionX){
+		
+		this.positionX = positionX;
+	}
+	
+	public void setPositionY(float positionY){
+		
+		this.positionY = positionY;
+	}
+
+	public boolean isOut() {
+		
+		return false;
+	}
+
+	public boolean collideWith(Tube tube) {
+		
+		Rectangle rect = getRect();
+		return rect.intersects(tube.getRectD()) || rect.intersects(tube.getRectU());
+	}
+	
+	public int getLives(){
+		
+		return this.lives;
+	}
+	
+	public void setLives(int lives){
+		
+		this.lives = lives;
+	}
+	
+	public int getScore(){
+		
+		return this.score;
+	}
+	
+	public void setScore(int score){
+		
+		this.score = score;
+	}
+
+	public boolean collideWith(Heart heart) {
+		
+		Rectangle rect = getRect();
+		return rect.intersects(heart.getRect());
 	}
 }
 

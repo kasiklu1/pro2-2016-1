@@ -14,6 +14,7 @@ public class Tube {
 	private float positionX, positionY;
 	private int height;
 	private Color color;
+	private boolean counted = false;
 	
 	
 	public Tube(float positionX, int height, Color color){
@@ -58,5 +59,15 @@ public class Tube {
 	public float getPositionY(){
 		
 		return positionY;
+	}
+
+	public void setCounted(boolean pass) {
+		
+		this.counted = pass;
+	}
+
+	public float getCenterY() {
+		
+		return (int) (height - GAP / 2.0);
 	}
 }

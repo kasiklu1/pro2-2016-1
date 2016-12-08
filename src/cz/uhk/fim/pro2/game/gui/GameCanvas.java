@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.List;
 
 import cz.uhk.fim.pro2.game.model.Bird;
+import cz.uhk.fim.pro2.game.model.Heart;
 import cz.uhk.fim.pro2.game.model.Tube;
 import cz.uhk.fim.pro2.game.model.World;
 
@@ -25,10 +26,16 @@ public class GameCanvas extends Canvas {
 		Bird bird = world.getBird();
 		bird.paint(g);
 		List<Tube> tubes = world.getTubes();
+		List<Heart> hearts = world.getHearts();
 		
-		for (Tube t: tubes){
+		for (Tube tr: tubes){
 			
-			t.paint(g);
+			tr.paint(g);
+		}
+		
+		for (Heart hr: hearts){
+			
+			hr.paint(g);
 		}
 		
 	}
