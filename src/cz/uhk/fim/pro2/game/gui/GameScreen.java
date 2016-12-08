@@ -33,6 +33,13 @@ public class GameScreen extends Screen implements WorldListener{
 		JLabel jLabelScore = new JLabel("Score: " + Bird.DEFAULT_SCORE);
 		JLabel jLabelLives = new JLabel("Životy: " + Bird.DEFAULT_LIVES);
 		
+		add(jButtonBack);
+		add(jButtonPause);
+		add(jLabelScore);
+		add(jLabelLives);
+		
+		jButtonBack.setBounds(50, 50, 400, 100);
+		
 		jButtonBack.addActionListener(new ActionListener() {
 			
 			@Override
@@ -42,10 +49,22 @@ public class GameScreen extends Screen implements WorldListener{
 			}
 		});
 		
-		add(jButtonBack);
-		add(jButtonPause);
-		add(jLabelScore);
-		add(jLabelLives);
+		jButtonPause.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (timer.isRunning()){
+					
+					timer.stop();
+				}
+				else {
+					
+					lastTimeMillies = System.currentTimeMillis();
+					timer.start();
+				}
+			}
+		});
 		
 		bird = new Bird("Flapy", 240, 400);
 		World world = new World(bird, this);
@@ -93,22 +112,6 @@ public class GameScreen extends Screen implements WorldListener{
 			}
 		});
 		
-		jButtonPause.addActionListener(new ActionListener(){
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				if (timer.isRunning()){
-					
-					timer.stop();
-				}
-				else {
-					
-					lastTimeMillies = System.currentTimeMillis();
-					timer.start();
-				}
-			}
-		});
 		
 		lastTimeMillies = System.currentTimeMillis();
 		timer.start();
@@ -122,7 +125,6 @@ public class GameScreen extends Screen implements WorldListener{
 	
 		bird.removeLive();
 		bird.setPositionY(tube.getCenterY());
-		System.out.println("Nazazil jsi do trubky. Zbývá ti " + bird.getLives() + " životù.");
 		
 	}
 
@@ -142,6 +144,8 @@ public class GameScreen extends Screen implements WorldListener{
 	public void outOfScene() {
 
 		bird.removeLive();
+		bird.setPositionY(MainFrame.HEIGHT / 2);
+		bird.setSpeed(bird.JUMP / 2);
 	}
 
 }

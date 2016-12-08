@@ -47,7 +47,7 @@ public class World {
 		
 		bird.update(deltaTime);
 		
-		if(bird.isOut()){
+		if(bird.isOutOfScene()){
 			
 			worldListener.outOfScene();
 		}
@@ -56,10 +56,17 @@ public class World {
 			
 			tr.update(deltaTime);
 			
+			
 			if(bird.collideWith(tr)){
 				
 				tr.setCounted(true);
 				worldListener.crashTube(tr);
+			}
+			
+			if(!tr.isCounted() && bird.getPositionX() >= tr.getMaximalX()){
+				
+				bird.addScore();
+				tr.setCounted(true);
 			}
 		}
 		

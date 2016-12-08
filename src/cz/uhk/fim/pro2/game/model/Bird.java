@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import cz.uhk.fim.pro2.game.gui.MainFrame;
+
 public class Bird {
 	
 	private static final int GRAVITY = 180;
@@ -91,9 +93,10 @@ public class Bird {
 		this.positionY = positionY;
 	}
 
-	public boolean isOut() {
+	public boolean isOutOfScene() {
 		
-		return false;
+		Rectangle rect = getRect();
+		return rect.getMinY() <=  0 || rect.getMaxY() >= MainFrame.HEIGHT - 50;
 	}
 
 	public boolean collideWith(Tube tube) {
@@ -121,11 +124,26 @@ public class Bird {
 		
 		this.score = score;
 	}
+	
+	public float getSpeed(){
+		
+		return this.speed;
+	}
+	
+	public void setSpeed(float speed){
+		
+		this.speed = speed;
+	}
 
 	public boolean collideWith(Heart heart) {
 		
 		Rectangle rect = getRect();
 		return rect.intersects(heart.getRect());
+	}
+
+	public void addScore() {
+		
+		this.score++;
 	}
 }
 

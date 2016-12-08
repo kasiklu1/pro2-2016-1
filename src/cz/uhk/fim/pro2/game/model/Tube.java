@@ -70,4 +70,14 @@ public class Tube {
 		
 		return (int) (height - GAP / 2.0);
 	}
+
+	public boolean isCounted() {
+		
+		return counted;
+	}
+
+	public float getMaximalX() {
+		
+		return getPositionX() + (WIDTH / 2);
+	}
 }
