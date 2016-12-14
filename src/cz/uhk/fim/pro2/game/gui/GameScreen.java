@@ -38,7 +38,10 @@ public class GameScreen extends Screen implements WorldListener{
 		add(jLabelScore);
 		add(jLabelLives);
 		
-		jButtonBack.setBounds(50, 50, 400, 100);
+		jButtonBack.setBounds(50, 13, 75, 25);
+		jButtonPause.setBounds(140, 13, 75, 25);
+		jLabelLives.setBounds(230, 13, 100, 25);
+		jLabelScore.setBounds(345, 13, 100, 25);
 		
 		jButtonBack.addActionListener(new ActionListener() {
 			

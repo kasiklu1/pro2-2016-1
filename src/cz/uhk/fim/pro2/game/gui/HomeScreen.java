@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class HomeScreen extends Screen {
 	
@@ -12,7 +13,8 @@ public class HomeScreen extends Screen {
 		
 		JButton jButtonPlay = new JButton("PLAY");
 		JButton jButtonScore = new JButton("SCORE");
-		JButton jButtonSounds = new JButton("SOUND");
+		//JButton jButtonSounds = new JButton("SOUND");
+		JLabel jLabelName = new JLabel("Flappy Bird");
 		
 		jButtonPlay.addActionListener(new ActionListener() {
 			
@@ -34,13 +36,16 @@ public class HomeScreen extends Screen {
 		
 		add(jButtonPlay);
 		add(jButtonScore);
-		add(jButtonSounds);
+		//add(jButtonSounds);
+		add(jLabelName);
 		
-		
+		jButtonPlay.setBounds(200, 400, 100, 40);
+		jButtonScore.setBounds(200, 460, 100, 40);
+		jLabelName.setBounds(175, 200, 200, 40);
 		
 		jButtonPlay.setVisible(true);
 		jButtonScore.setVisible(true);
-		jButtonSounds.setVisible(true);
+	//	jButtonSounds.setVisible(true);
 		
 		
 		
