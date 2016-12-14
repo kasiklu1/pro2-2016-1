@@ -3,6 +3,7 @@ package cz.uhk.fim.pro2.game.model;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Random;
 
 import cz.uhk.fim.pro2.game.gui.MainFrame;
 
@@ -55,6 +56,12 @@ public class Heart {
 	public Rectangle getRect(){
 		
 		return new Rectangle((int) getPositionX() - 25, (int) positionY - 25 , 50, 50);
+	}
+
+
+	public static float getRandomY() {
+		
+		return (new Random().nextFloat() * 300) + 200;
 	}
 
 }
