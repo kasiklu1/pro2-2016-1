@@ -1,5 +1,6 @@
 package cz.uhk.fim.pro2.game.gui;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,8 @@ public class HomeScreen extends Screen {
 		JButton jButtonScore = new JButton("SCORE");
 		//JButton jButtonSounds = new JButton("SOUND");
 		JLabel jLabelName = new JLabel("Flappy Bird");
+		jLabelName.setFont(new Font("Arial", Font.BOLD, 40));
+		jLabelName.setBounds(120, 120, 280, 50);
 		
 		jButtonPlay.addActionListener(new ActionListener() {
 			
@@ -33,15 +36,14 @@ public class HomeScreen extends Screen {
 				
 			}
 		});
-		
+			
 		add(jButtonPlay);
 		add(jButtonScore);
 		//add(jButtonSounds);
 		add(jLabelName);
 		
-		jButtonPlay.setBounds(200, 400, 100, 40);
-		jButtonScore.setBounds(200, 460, 100, 40);
-		jLabelName.setBounds(175, 200, 200, 40);
+		jButtonPlay.setBounds(180, 400, 100, 40);
+		jButtonScore.setBounds(180, 460, 100, 40);
 		
 		jButtonPlay.setVisible(true);
 		jButtonScore.setVisible(true);

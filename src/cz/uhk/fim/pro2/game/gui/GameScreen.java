@@ -38,8 +38,8 @@ public class GameScreen extends Screen implements WorldListener{
 		add(jLabelScore);
 		add(jLabelLives);
 		
-		jButtonBack.setBounds(50, 13, 75, 25);
-		jButtonPause.setBounds(140, 13, 75, 25);
+		jButtonBack.setBounds(10, 13, 75, 25);
+		jButtonPause.setBounds(100, 13, 75, 25);
 		jLabelLives.setBounds(230, 13, 100, 25);
 		jLabelScore.setBounds(345, 13, 100, 25);
 		
@@ -47,8 +47,9 @@ public class GameScreen extends Screen implements WorldListener{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.setScreen(new HomeScreen(mainFrame));
 				
+				timer.stop();
+				mainFrame.setScreen(new HomeScreen(mainFrame));			
 			}
 		});
 		
@@ -125,8 +126,6 @@ public class GameScreen extends Screen implements WorldListener{
 			
 	}
 
-
-
 	@Override
 	public void crashTube(Tube tube) {
 	
@@ -135,8 +134,6 @@ public class GameScreen extends Screen implements WorldListener{
 		
 	}
 
-
-
 	@Override
 	public void crashHeart(Heart heart) {
 		
@@ -144,9 +141,7 @@ public class GameScreen extends Screen implements WorldListener{
 		heart.setPositionY(-100);
 		
 	}
-
-
-
+	
 	@Override
 	public void outOfScene() {
 
