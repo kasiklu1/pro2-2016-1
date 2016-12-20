@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +61,8 @@ public class ScoreManager {
 			
 			System.out.println("Chyba pøi naèítání dat ze souboru");
 		}
+		Collections.sort(scoreList);
+		Collections.reverse(scoreList);
 		return scoreList;
 	}
 	

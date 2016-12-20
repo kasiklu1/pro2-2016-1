@@ -3,6 +3,7 @@ package cz.uhk.fim.pro2.game.model;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import cz.uhk.fim.pro2.game.gui.MainFrame;
 
@@ -61,11 +62,10 @@ public class Bird {
 		this.lives--;
 	}
 	
-	public void paint(Graphics g){
+	public void paint(Graphics g, BufferedImage image){
 		
-		g.setColor(Color.blue);
 		Rectangle rect = getRect();
-		g.fillRect(rect.x, rect.y, rect.width, rect.height);
+		g.drawImage(image, rect.x, rect.y, (int)rect.getWidth(), (int)rect.getHeight() , null);
 		
 	}
 	public Rectangle getRect(){
