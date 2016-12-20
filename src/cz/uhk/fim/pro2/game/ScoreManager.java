@@ -11,10 +11,8 @@ import java.util.List;
 public class ScoreManager {
 	
 	// DEFINICE TØÍDY
-	private List<Integer> scoreList;
 	private ScoreManager(){
 		
-		this.scoreList = new ArrayList<>();
 	}
 	
 	public void addScore(int score){
@@ -51,7 +49,7 @@ public class ScoreManager {
 			
 			fileReader = new FileReader(Game.SCORE_FILE);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			bufferedReader.readLine();
+			//bufferedReader.readLine();
 			String line;
 			while((line = bufferedReader.readLine()) != null){
 				

@@ -23,7 +23,6 @@ public class FinishScreen extends Screen {
 			scoreLabel = new JLabel(score + "!");
 			scoreLabel.setFont(new Font("Arial", Font.BOLD, 40));
 			scoreLabel.setBounds(100, 400, 280, 50);
-			
 			add(scoreLabel);
 			
 			JButton jButtonBack = new JButton("BACK");
